@@ -1,0 +1,25 @@
+version: 1
+
+model:
+  name: "temporal_gru"
+  family: "recurrent_temporal_baseline"
+  status: "placeholder_only"
+  description: "Stage 0 reserves the model contract only; feature assembly and training remain out of scope."
+
+inputs:
+  feature_spec_source: "stage3_feature_builder"
+  sample_index_source: "stage3_sample_index"
+
+outputs:
+  target_spec_source: "stage3_label_builder"
+
+hyperparameters:
+  input_size: null
+  hidden_size: 128
+  num_layers: 2
+  dropout: 0.1
+  bidirectional: false
+
+training_contract:
+  requires_cutoff_date: true
+  data_protocol_config: "configs/data/walk_forward_2016_2023.yaml"

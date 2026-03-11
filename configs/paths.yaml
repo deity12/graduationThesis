@@ -1,0 +1,21 @@
+version: 1
+project_root: "."
+
+paths:
+  docs_root: "docs"
+  raw_fnspid_root: "data/raw/fnspid"
+  data_root: "data"
+  raw_data_root: "data/raw"
+  raw_prices_root: "data/raw/prices"
+  raw_prices_stocks_root: "data/raw/prices/stocks"
+  raw_prices_market_root: "data/raw/prices/market"
+  raw_universe_root: "data/raw/universe"
+  raw_mapping_root: "data/raw/mapping"
+  interim_data_root: "data/interim"
+  processed_data_root: "data/processed"
+  outputs_root: "outputs"
+  logs_root: "logs"
+
+policy:
+  read_paths_from_yaml_only: true
+  note: "Project paths must be resolved from YAML configs instead of hard-coded script constants."

@@ -1,0 +1,24 @@
+项目状态总结（Stage4 更新版）
+
+更新时间：2026-03-11
+
+一、阶段4（可行性验证）当前状态
+- 已在服务器上完成 vLLM + Qwen2.5-32B-AWQ 的真实推理链路。
+- 已按规范跑通：1 条 smoke + 100 条（2016 年）正式抽取，并产出阶段4正式报告与抽样/结果产物。
+- 重要产物（参考）：
+  - outputs/stage4/stage4_report.json
+  - outputs/stage4/stage4_report.md
+  - outputs/stage4/official_sample_2016.parquet
+  - outputs/stage4/smoke_results.parquet
+  - outputs/stage4/formal_results.parquet
+
+二、当前下一步（不提前实现阶段5）
+- 阶段4收尾重点为：
+  1) 确认并可复核 official_sample_2016.parquet 的上游口径（与 data/interim/news_normalized.parquet 的一致性证据链）
+  2) 修正 stage4 report 中 can_enter_stage5 的 gate 逻辑，使其严格对应项目既定阈值
+  3) 在不重跑 100 条抽取的前提下，复用现有 outputs/stage4/* 重新生成/校验报告产物
+
+三、阶段5准入决策说明
+- 阶段5（全量抽取）尚未实现、也不应在本轮提前实现。
+- 进入阶段5的准入由 stage4 报告中的 can_enter_stage5 gate 给出（由既定阈值计算），并需结合项目管理决策执行。
+

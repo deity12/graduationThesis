@@ -1,0 +1,23 @@
+# 模型权重目录（约 20GB+，不纳入版本控制）
+models/
+
+# 大体积数据与日志（不纳入版本控制）
+data/
+logs/
+outputs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# 环境与 IDE
+.venv/
+venv/
+.env
+.idea/
+.vscode/

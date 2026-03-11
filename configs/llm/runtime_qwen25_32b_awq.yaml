@@ -1,0 +1,7 @@
+runtime:
+  # Prefer local path when HF access is restricted.
+  model_name: "models/Qwen2.5-32B-Instruct-AWQ"
+  temperature: 0.0
+  top_p: 1.0
+  max_output_tokens: 512
+

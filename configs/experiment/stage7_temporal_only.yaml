@@ -1,0 +1,14 @@
+version: 1
+
+experiment:
+  name: "stage7_temporal_only"
+  stage: 7
+  status: "placeholder_only"
+
+config_refs:
+  base: "configs/experiment/base.yaml"
+  model: "configs/model/temporal_gru.yaml"
+  data_protocol: "configs/data/walk_forward_2016_2023.yaml"
+
+notes:
+  - "Training framework is deferred to stage 7."

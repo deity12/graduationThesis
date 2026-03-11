@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "source": {
+      "type": "string",
+      "description": "Source entity (company name or ticker). Empty string means unknown."
+    },
+    "targets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Target entities (tickers or company names). Empty array means no spillover targets."
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "",
+        "other",
+        "earnings",
+        "guidance",
+        "merger_acquisition",
+        "lawsuit",
+        "product_launch",
+        "regulatory",
+        "partnership",
+        "investment",
+        "bankruptcy",
+        "macro",
+        "geopolitical"
+      ],
+      "description": "Coarse event category. Empty string means unknown."
+    }
+  },
+  "required": [
+    "source",
+    "targets",
+    "event_type"
+  ]
+}

@@ -1,0 +1,15 @@
+version: 1
+
+experiment:
+  name: "stage9_full_model"
+  stage: 9
+  status: "placeholder_only"
+
+config_refs:
+  base: "configs/experiment/base.yaml"
+  model: "configs/model/temporal_gru.yaml"
+  llm_runtime: "configs/llm/runtime_qwen25_32b_awq.yaml"
+  data_protocol: "configs/data/walk_forward_2016_2023.yaml"
+
+notes:
+  - "The full experiment matrix is deferred to stage 9."

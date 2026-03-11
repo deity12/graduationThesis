@@ -1,0 +1,14 @@
+version: 1
+
+experiment:
+  name: "base_experiment"
+  status: "placeholder_only"
+  description: "Shared experiment entrypoint placeholder for downstream stages."
+
+config_refs:
+  paths: "configs/paths.yaml"
+  data_protocol: "configs/data/walk_forward_2016_2023.yaml"
+
+runtime:
+  output_root_key: "outputs_root"
+  log_root_key: "logs_root"

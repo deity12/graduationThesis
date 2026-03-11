@@ -1,0 +1,18 @@
+version: 1
+
+experiment:
+  name: "stage4_feasibility"
+  stage: 4
+  status: "local_implementation_ready"
+
+config_refs:
+  base: "configs/experiment/base.yaml"
+  llm_runtime: "configs/llm/runtime_qwen25_32b_awq.yaml"
+  llm_schema: "configs/llm/spillover_schema_v2_vllm_compatible.json"
+  data_protocol: "configs/data/walk_forward_2016_2023.yaml"
+  stage4_runtime: "configs/llm/stage4_feasibility_2016.yaml"
+
+notes:
+  - "Formal feasibility extraction is implemented in stage 4, not in stage 0."
+  - "Local default execution mode remains mock until GPU/vLLM preflight passes."
+  - "This experiment config is metadata only; the runner reads configs/llm/stage4_feasibility_2016.yaml by default."
