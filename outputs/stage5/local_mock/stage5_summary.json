@@ -1,0 +1,183 @@
+{
+  "generated_at_utc": "2026-03-11T10:55:40.264699+00:00",
+  "config_path": "e:/Graduation Thesis/outputs/stage5/local_mock/stage5_local_mock_config.yaml",
+  "run_mode": "mock",
+  "stage4_gate": {
+    "can_start_server_stage4_validation": true,
+    "stage4_formally_complete": true,
+    "can_enter_stage5": true,
+    "source_path": "E:\\Graduation Thesis\\outputs\\stage4\\stage4_report.json"
+  },
+  "preflight": null,
+  "checkpoint": {
+    "created_at_utc": "2026-03-11T10:54:30.671447+00:00",
+    "updated_at_utc": "2026-03-11T10:55:39.740007+00:00",
+    "config_path": "e:/Graduation Thesis/outputs/stage5/local_mock/stage5_local_mock_config.yaml",
+    "run_mode": "mock",
+    "stage4_gate": {
+      "can_start_server_stage4_validation": true,
+      "stage4_formally_complete": true,
+      "can_enter_stage5": true,
+      "source_path": "E:\\Graduation Thesis\\outputs\\stage4\\stage4_report.json"
+    },
+    "input_path": "data/processed/news_source_mapped.parquet",
+    "filters": {
+      "start_date": "2015-09-01",
+      "warmup_end": "2015-12-31",
+      "evaluation_start": "2016-01-01",
+      "end_date": "2023-12-31",
+      "require_mapped_source": true,
+      "require_source_ticker": true
+    },
+    "shards": {
+      "2015-09": {
+        "status": "completed",
+        "last_completed_batch_index": 0,
+        "total_rows": 8,
+        "total_batches": 1,
+        "processed_rows": 8,
+        "success_rows": 8,
+        "failure_rows": 0,
+        "resolved_edge_count": 16,
+        "updated_at_utc": "2026-03-11T10:54:31.308429+00:00"
+      }
+    },
+    "totals": {
+      "planned_shards": 1,
+      "completed_shards": 1,
+      "processed_rows": 8,
+      "success_rows": 8,
+      "failure_rows": 0,
+      "resolved_edge_count": 16
+    }
+  },
+  "output_paths": {
+    "checkpoint_json": "outputs/stage5/local_mock/stage5_checkpoint.json",
+    "summary_json": "outputs/stage5/local_mock/stage5_summary.json",
+    "summary_markdown": "outputs/stage5/local_mock/stage5_summary.md",
+    "failures_parquet": "outputs/stage5/local_mock/stage5_failures.parquet",
+    "extractions_parquet": "outputs/stage5/local_mock/spillover_extractions.parquet",
+    "edges_parquet": "outputs/stage5/local_mock/spillover_edges.parquet"
+  },
+  "cache_paths": {
+    "raw_dir": "outputs/stage5/local_mock/cache/raw",
+    "parsed_dir": "outputs/stage5/local_mock/cache/parsed",
+    "failure_dir": "outputs/stage5/local_mock/cache/failure"
+  },
+  "manifests": {
+    "checkpoint_json": {
+      "path": "outputs/stage5/local_mock/stage5_checkpoint.json",
+      "resolved_path": "E:\\Graduation Thesis\\outputs\\stage5\\local_mock\\stage5_checkpoint.json",
+      "available": true,
+      "size_bytes": 1276,
+      "mtime_utc": "2026-03-11T10:54:31.309642+00:00",
+      "fingerprint_sha256": "4bef4586e546dcb8b76c0635c0fc9af8239fcd5dcb46ac08dc6b5eb8bcd0203f"
+    },
+    "summary_json": {
+      "path": "outputs/stage5/local_mock/stage5_summary.json",
+      "resolved_path": "E:\\Graduation Thesis\\outputs\\stage5\\local_mock\\stage5_summary.json",
+      "available": true,
+      "size_bytes": 6671,
+      "mtime_utc": "2026-03-11T10:55:40.260304+00:00",
+      "fingerprint_sha256": "64926b8d428f1735ce7b95f5e7fc564f27f3ba17539fed561e1df73414455fa9"
+    },
+    "extractions_parquet": {
+      "path": "outputs/stage5/local_mock/spillover_extractions.parquet",
+      "resolved_path": "E:\\Graduation Thesis\\outputs\\stage5\\local_mock\\spillover_extractions.parquet",
+      "available": true,
+      "size_bytes": 18742,
+      "mtime_utc": "2026-03-11T10:55:40.235646+00:00",
+      "parquet_num_rows": 8,
+      "parquet_num_row_groups": 1,
+      "parquet_num_columns": 25,
+      "parquet_columns_head": [
+        "news_id",
+        "shard_id",
+        "batch_id",
+        "published_date",
+        "cutoff_date",
+        "is_warmup",
+        "in_evaluation_window",
+        "source_ticker",
+        "source_company_name",
+        "request_mode",
+        "extracted_source",
+        "extracted_targets",
+        "extracted_event_type",
+        "is_valid_source",
+        "has_valid_targets",
+        "valid_target_count",
+        "resolved_target_tickers",
+        "unresolved_targets",
+        "resolved_target_count",
+        "has_resolved_targets",
+        "self_loop_targets_dropped",
+        "target_resolution_json",
+        "raw_content_sha256",
+        "seed",
+        "run_mode"
+      ],
+      "fingerprint_sha256": "b2f76a7008d2b9b6c0d2fbb5f007e84dfcd44caeba70e7dec16554e960df5a5f"
+    },
+    "edges_parquet": {
+      "path": "outputs/stage5/local_mock/spillover_edges.parquet",
+      "resolved_path": "E:\\Graduation Thesis\\outputs\\stage5\\local_mock\\spillover_edges.parquet",
+      "available": true,
+      "size_bytes": 6735,
+      "mtime_utc": "2026-03-11T10:55:40.254771+00:00",
+      "parquet_num_rows": 16,
+      "parquet_num_row_groups": 1,
+      "parquet_num_columns": 11,
+      "parquet_columns_head": [
+        "news_id",
+        "published_date",
+        "cutoff_date",
+        "is_warmup",
+        "in_evaluation_window",
+        "source_ticker",
+        "target_ticker",
+        "event_type",
+        "shard_id",
+        "batch_id",
+        "run_mode"
+      ],
+      "fingerprint_sha256": "4acdc21c11561113f5794d6a863329cd18b2344f4880a8a9a568f3cef21f1342"
+    },
+    "failures_parquet": {
+      "path": "outputs/stage5/local_mock/stage5_failures.parquet",
+      "resolved_path": "E:\\Graduation Thesis\\outputs\\stage5\\local_mock\\stage5_failures.parquet",
+      "available": true,
+      "size_bytes": 6257,
+      "mtime_utc": "2026-03-11T10:55:40.240663+00:00",
+      "parquet_num_rows": 0,
+      "parquet_num_row_groups": 1,
+      "parquet_num_columns": 13,
+      "parquet_columns_head": [
+        "news_id",
+        "shard_id",
+        "batch_id",
+        "published_date",
+        "cutoff_date",
+        "source_ticker",
+        "source_company_name",
+        "request_mode",
+        "raw_content_sha256",
+        "error_type",
+        "error_message",
+        "seed",
+        "run_mode"
+      ],
+      "fingerprint_sha256": "57ec5c61fd324504c0d4a18b1dfdb79307e550ec2256c5fe8234bddc3c443ea3"
+    },
+    "raw_cache_dir": {
+      "path": "outputs/stage5/local_mock/cache/raw"
+    },
+    "parsed_cache_dir": {
+      "path": "outputs/stage5/local_mock/cache/parsed"
+    },
+    "failure_cache_dir": {
+      "path": "outputs/stage5/local_mock/cache/failure"
+    }
+  },
+  "validation_note": "Only local mock extraction was executed. Real vLLM inference on the server remains pending."
+}

@@ -1,0 +1,241 @@
+{
+  "generated_at_utc": "2026-03-11T09:55:53.783609+00:00",
+  "config_path": "configs/llm/stage4_feasibility_2016.yaml",
+  "run_mode": "real",
+  "config_roles": {
+    "runtime_config": "configs/llm/stage4_feasibility_2016.yaml drives the runner and sampling behavior.",
+    "experiment_config": "configs/experiment/stage4_feasibility.yaml is metadata only."
+  },
+  "data_scope": {
+    "research_universe": "SP500",
+    "news_source_policy": "Only news rows mapped into the SP500 research universe are eligible for Stage 4 sampling.",
+    "warmup_policy": "2015-09-01 to 2015-12-31 may initialize windows but never enter the official 100-row denominator.",
+    "official_window": "2016-01-01 to 2016-12-31"
+  },
+  "schema_compatibility": {
+    "is_compatible": true,
+    "errors": [],
+    "warnings": []
+  },
+  "preflight": {
+    "nvidia_smi_available": true,
+    "gpu_available": true,
+    "vllm_import_available": true,
+    "model_identifier_parseable": true,
+    "server_reachable": true,
+    "model_resolved": true,
+    "structured_output_ready": true,
+    "ready_for_real_inference": true,
+    "hosted_models": [
+      "models/Qwen2.5-32B-Instruct-AWQ"
+    ],
+    "http_error": null,
+    "allow_live_minimal_call": false,
+    "minimal_call_checked": false,
+    "minimal_call_error": null
+  },
+  "sample_summary": {
+    "warmup_candidate_count": 106525,
+    "official_candidate_count": 197164,
+    "official_sample_size": 100,
+    "official_sample_requested": 100,
+    "official_months_present": [
+      "2016-01",
+      "2016-02",
+      "2016-03",
+      "2016-04",
+      "2016-05",
+      "2016-06",
+      "2016-07",
+      "2016-08",
+      "2016-09",
+      "2016-10",
+      "2016-11",
+      "2016-12"
+    ],
+    "official_monthly_counts": {
+      "2016-01": 16194,
+      "2016-02": 17921,
+      "2016-03": 16725,
+      "2016-04": 18799,
+      "2016-05": 18447,
+      "2016-06": 18766,
+      "2016-07": 20031,
+      "2016-08": 17717,
+      "2016-09": 12484,
+      "2016-10": 14179,
+      "2016-11": 14311,
+      "2016-12": 11590
+    },
+    "research_universe": "SP500",
+    "sampling_population_note": "Only rows already mapped into the SP500 research universe are sampled.",
+    "official_sample_path": "outputs/stage4/official_sample_2016.parquet"
+  },
+  "execution_summary": {
+    "mode": "real",
+    "local_mock_executed": false,
+    "formal_run_complete": true,
+    "results_path": "outputs/stage4/formal_results.parquet",
+    "processed_rows": 100,
+    "formal_metrics": {
+      "source_mapping_ratio": 0.83,
+      "valid_target_ratio": 0.52,
+      "avg_valid_target_count": 1.49,
+      "monthly_avg_out_degree": 3.465116,
+      "news_density_2016": 16430.333333,
+      "active_source_nodes": 32,
+      "coverage_conclusion": "sufficient"
+    },
+    "execution_note": "Real server-side smoke and formal extraction completed.",
+    "smoke_results_path": "outputs/stage4/smoke_results.parquet"
+  },
+  "formal_metrics": {
+    "source_mapping_ratio": 0.83,
+    "valid_target_ratio": 0.52,
+    "avg_valid_target_count": 1.49,
+    "monthly_avg_out_degree": 3.465116,
+    "news_density_2016": 16430.333333,
+    "active_source_nodes": 32,
+    "coverage_conclusion": "sufficient"
+  },
+  "decision_order": [
+    "若 2016 覆盖足够，按 2016-2023 / 4 split 继续。",
+    "若 2016 覆盖不足，先尝试 semantic_window_days: 63 -> 126，或改为季度更新。",
+    "若扩窗后 2016 仍不足但 2017 足够，则降级到 2017-2023 / 3 split。",
+    "只有上述三级都不满足，才建议暂停项目主线。"
+  ],
+  "stage_gate": {
+    "can_start_server_stage4_validation": true,
+    "stage4_formally_complete": true,
+    "can_enter_stage5": true
+  },
+  "sample_lineage": {
+    "sampling_window": {
+      "warmup_start": "2015-09-01",
+      "warmup_end": "2015-12-31",
+      "official_start": "2016-01-01",
+      "official_end": "2016-12-31"
+    },
+    "sampling_seed": 7,
+    "paths": {
+      "official_sample_parquet": "outputs/stage4/official_sample_2016.parquet",
+      "direct_input_news_source_mapped_parquet": "data/processed/news_source_mapped.parquet",
+      "upstream_news_normalized_parquet": "data/interim/news_normalized.parquet"
+    },
+    "manifests": {
+      "official_sample_parquet": {
+        "path": "outputs/stage4/official_sample_2016.parquet",
+        "resolved_path": "/root/autodl-tmp/outputs/stage4/official_sample_2016.parquet",
+        "available": true,
+        "size_bytes": 178635,
+        "mtime_utc": "2026-03-11T08:50:58.876760+00:00",
+        "parquet_num_rows": 100,
+        "parquet_num_row_groups": 1,
+        "parquet_num_columns": 13,
+        "parquet_columns_head": [
+          "news_id",
+          "published_date",
+          "title",
+          "body",
+          "summary_lsa",
+          "summary_luhn",
+          "summary_textrank",
+          "summary_lexrank",
+          "source_ticker",
+          "source_company_name",
+          "is_mapped",
+          "is_warmup",
+          "in_evaluation_window"
+        ],
+        "fingerprint_sha256": "258fddd63c4981a7b88b6741e6b919db86d815b298fee986a0cb7d15348d3755"
+      },
+      "direct_input_news_source_mapped_parquet": {
+        "path": "data/processed/news_source_mapped.parquet",
+        "resolved_path": "/root/autodl-tmp/data/processed/news_source_mapped.parquet",
+        "available": true,
+        "size_bytes": 4006987472,
+        "mtime_utc": "2026-03-11T05:45:46.245635+00:00",
+        "parquet_num_rows": 2782726,
+        "parquet_num_row_groups": 56,
+        "parquet_num_columns": 26,
+        "parquet_columns_head": [
+          "news_id",
+          "published_at",
+          "published_date",
+          "ticker_raw",
+          "title",
+          "body",
+          "url",
+          "publisher_raw",
+          "author_raw",
+          "summary_lsa",
+          "summary_luhn",
+          "summary_textrank",
+          "summary_lexrank",
+          "has_content",
+          "is_warmup",
+          "in_evaluation_window",
+          "source_file",
+          "source_priority",
+          "source_row_number",
+          "version",
+          "source_ticker",
+          "mapping_method",
+          "source_price_ticker",
+          "source_company_name",
+          "mapping_confidence"
+        ],
+        "fingerprint_sha256": "fcd87fc89dab339b5011e9611f4e3f4acf19377974e2c2811ef0b273ff9f15fb"
+      },
+      "upstream_news_normalized_parquet": {
+        "path": "data/interim/news_normalized.parquet",
+        "resolved_path": "/root/autodl-tmp/data/interim/news_normalized.parquet",
+        "available": true,
+        "size_bytes": 3998065597,
+        "mtime_utc": "2026-03-11T05:45:08.342227+00:00",
+        "parquet_num_rows": 2782726,
+        "parquet_num_row_groups": 56,
+        "parquet_num_columns": 20,
+        "parquet_columns_head": [
+          "news_id",
+          "published_at",
+          "published_date",
+          "ticker_raw",
+          "title",
+          "body",
+          "url",
+          "publisher_raw",
+          "author_raw",
+          "summary_lsa",
+          "summary_luhn",
+          "summary_textrank",
+          "summary_lexrank",
+          "has_content",
+          "is_warmup",
+          "in_evaluation_window",
+          "source_file",
+          "source_priority",
+          "source_row_number",
+          "version"
+        ],
+        "fingerprint_sha256": "1d841209232f089291a735df30d7ea513a44003af18518a0b8615d7e49d67310"
+      }
+    },
+    "lineage_statement": {
+      "direct_input": "data/processed/news_source_mapped.parquet",
+      "upstream_main_table": "data/interim/news_normalized.parquet",
+      "standard_wording": "Stage4 official sample is directly sampled from data/processed/news_source_mapped.parquet. The sampled news_id are 100% traceable in data/interim/news_normalized.parquet with key fields consistent, and source_file is restricted to the official dual-source corpus."
+    },
+    "traceability_check": {
+      "available": true,
+      "matched_ratio_in_news_normalized": 1.0,
+      "published_date_equal_ratio": 1.0,
+      "title_equal_ratio": 1.0,
+      "source_file_unique": [
+        "All_external.csv",
+        "nasdaq_exteral_data.csv"
+      ],
+      "source_file_dual_source_only": true
+    }
+  }
+}

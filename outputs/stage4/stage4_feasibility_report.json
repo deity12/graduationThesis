@@ -1,0 +1,101 @@
+{
+  "generated_at_utc": "2026-03-08T05:28:55.975234+00:00",
+  "config_path": "configs/llm/stage4_feasibility_2016.yaml",
+  "run_mode": "mock",
+  "config_roles": {
+    "runtime_config": "configs/llm/stage4_feasibility_2016.yaml drives the runner and sampling behavior.",
+    "experiment_config": "configs/experiment/stage4_feasibility.yaml is metadata only."
+  },
+  "data_scope": {
+    "research_universe": "SP500",
+    "news_source_policy": "Only news rows mapped into the SP500 research universe are eligible for Stage 4 sampling.",
+    "warmup_policy": "2015-09-01 to 2015-12-31 may initialize windows but never enter the official 100-row denominator.",
+    "official_window": "2016-01-01 to 2016-12-31"
+  },
+  "schema_compatibility": {
+    "is_compatible": true,
+    "errors": [],
+    "warnings": []
+  },
+  "preflight": {
+    "nvidia_smi_available": true,
+    "gpu_available": true,
+    "vllm_import_available": false,
+    "model_identifier_parseable": true,
+    "server_reachable": false,
+    "model_resolved": false,
+    "structured_output_ready": false,
+    "ready_for_real_inference": false,
+    "hosted_models": [],
+    "http_error": "Failed to reach vLLM models endpoint at http://127.0.0.1:8000/v1/models: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /v1/models (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))",
+    "allow_live_minimal_call": false,
+    "minimal_call_checked": false,
+    "minimal_call_error": null
+  },
+  "sample_summary": {
+    "warmup_candidate_count": 106525,
+    "official_candidate_count": 197164,
+    "official_sample_size": 100,
+    "official_sample_requested": 100,
+    "official_months_present": [
+      "2016-01",
+      "2016-02",
+      "2016-03",
+      "2016-04",
+      "2016-05",
+      "2016-06",
+      "2016-07",
+      "2016-08",
+      "2016-09",
+      "2016-10",
+      "2016-11",
+      "2016-12"
+    ],
+    "official_monthly_counts": {
+      "2016-01": 16194,
+      "2016-02": 17921,
+      "2016-03": 16725,
+      "2016-04": 18799,
+      "2016-05": 18447,
+      "2016-06": 18766,
+      "2016-07": 20031,
+      "2016-08": 17717,
+      "2016-09": 12484,
+      "2016-10": 14179,
+      "2016-11": 14311,
+      "2016-12": 11590
+    },
+    "research_universe": "SP500",
+    "sampling_population_note": "Only rows already mapped into the SP500 research universe are sampled.",
+    "official_sample_path": "outputs\\stage4\\stage4_official_sample_2016.parquet"
+  },
+  "execution_summary": {
+    "mode": "mock",
+    "local_mock_executed": true,
+    "formal_run_complete": false,
+    "results_path": "outputs\\stage4\\stage4_local_mock_results.parquet",
+    "processed_rows": 5,
+    "formal_metrics": null,
+    "execution_note": "The official 100-row 2016 sample has been prepared, but only a small local mock subset was processed. Real 1-row smoke plus 100-row formal extraction remains pending on the server."
+  },
+  "formal_metrics": {
+    "source_mapping_ratio": null,
+    "valid_target_ratio": null,
+    "avg_valid_target_count": null,
+    "monthly_avg_out_degree": null,
+    "news_density_2016": null,
+    "active_source_nodes": null,
+    "coverage_conclusion": "pending_server_validation"
+  },
+  "decision_order": [
+    "若 2016 覆盖足够，按 2016-2023 / 4 split 继续。",
+    "若 2016 覆盖不足，先尝试 semantic_window_days: 63 -> 126，或改为季度更新。",
+    "若扩窗后 2016 仍不足但 2017 足够，则降级到 2017-2023 / 3 split。",
+    "只有上述三级都不满足，才建议暂停项目主线。"
+  ],
+  "stage_gate": {
+    "can_start_server_stage4_validation": true,
+    "stage4_formally_complete": false,
+    "can_enter_stage5": false
+  }
+}
