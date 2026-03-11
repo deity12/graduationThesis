@@ -5,10 +5,15 @@ models/
 data/
 logs/
 outputs/
+*.parquet
+*.log
+*.ckpt
+*.tmp
 
 # Python
 __pycache__/
 *.py[cod]
+*.pyc
 *.egg-info/
 .eggs/
 .pytest_cache/
