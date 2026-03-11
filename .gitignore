@@ -4,7 +4,7 @@ models/
 # 大体积数据与日志（不纳入版本控制）
 data/
 logs/
-outputs/
+
 *.parquet
 *.log
 *.ckpt
@@ -26,3 +26,28 @@ venv/
 .env
 .idea/
 .vscode/
+
+# 默认忽略所有 outputs 内容
+outputs/**
+
+# 先放行目录，后面才能继续放行具体文件
+!outputs/**/
+
+# 永远忽略重产物 / 运行态产物
+outputs/**/*.parquet
+outputs/**/*.log
+outputs/**/cache/**
+outputs/**/raw/**
+outputs/**/parsed/**
+outputs/**/failures/**
+outputs/**/tmp/**
+outputs/**/temp/**
+outputs/**/checkpoint*.json
+outputs/**/stage*_checkpoint.json
+
+# 保留轻量、可读、适合版本管理的阶段性结果
+!outputs/**/*.md
+!outputs/**/*_report.json
+!outputs/**/*_summary.json
+!outputs/**/manifest.json
+!outputs/**/README.md
